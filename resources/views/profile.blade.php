@@ -23,7 +23,7 @@
         </div>
         <div class="info">
             <p class="label">Kelas :</p>
-            <p class="value">{{ $user->nama_kelas ?? 'Kelas Tidak Ditemukan' }}</p> <!-- Proper width for class -->
+            <p class="value">{{ $user->kelas->nama_kelas ?? 'Kelas Tidak Ditemukan' }}</p> <!-- Proper width for class -->
         </div>
     </div>
 </body>
