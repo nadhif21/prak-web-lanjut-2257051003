@@ -3,30 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modul 2</title>
+    <title>Create User</title>
     <link rel="stylesheet" href="/assets/css/cuser.css">
 </head>
 <body>
     <form action="{{ route('user.store') }}" method="POST">
         @csrf
-        <table>
-            <tr>
-                <td>Nama:</td>
-                <td><input type="text" name="nama"></td>
-            </tr>
-            <tr>
-                <td>NPM:</td>
-                <td><input type="text" name="npm"></td>
-            </tr>
-            <tr>
-                <td>Kelas:</td>
-                <td><input type="text" name="kelas"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Submit"></td>
-            </tr>
-        </table>
+        
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama">
+        @foreach($errors->get('nama') as $msg)
+            <p class="text-danger">{{ $msg }}</p>
+        @endforeach
+
+        <label for="npm">NPM:</label>
+        <input type="text" id="npm" name="npm">
+        @foreach($errors->get('npm') as $msg)
+            <p class="text-danger">{{ $msg }}</p>
+        @endforeach
+
+        <label for="kelas">Kelas :</label>
+        <select name="kelas_id" id="kelas_id">
+            @foreach ($kelas as $kelasItem)
+                <option value="{{ $kelasItem->id }}">{{ $kelasItem->nama_kelas }}</option>
+            @endforeach
+        </select>
+
+        <input type="submit" value="Submit">
     </form>
 </body>
 </html>
